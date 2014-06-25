@@ -15,6 +15,6 @@ server {
     location ~ /geoserver/(.*) {
         resolver  10.34.56.60;
         proxy_set_header HOST geoserver-<%= ENV['OPENSHIFT_NAMESPACE'] %>.apps.zone52.org;
-        proxy_pass http://geoserver-<%= ENV['OPENSHIFT_NAMESPACE'] %>.apps.zone52.org/$1$is_args$args;
+        proxy_pass http://geoserver-<%= ENV['OPENSHIFT_NAMESPACE'] %>.apps.zone52.org/geoserver/$1$is_args$args;
     }
 }
