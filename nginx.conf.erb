@@ -5,4 +5,10 @@ server {
     location / {
         index  index.html index.htm;
     }
+
+    location ~ /v/(.*) {
+        resolver  10.34.56.60;
+        proxy_set_header HOST rok4-<%= ENV['OPENSHIFT_NAMESPACE'] %>.apps.zone52.org;
+        proxy_pass http://rok4-<%= ENV['OPENSHIFT_NAMESPACE'] %>.apps.zone52.org/$1$is_args$args;
+    }
 }
